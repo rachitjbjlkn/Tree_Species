@@ -1,19 +1,10 @@
 import { useState } from 'react'
 import species from '../data/treeSpecies'
-
-const PLACEHOLDER = `data:image/svg+xml,${encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect fill="#2d2d2d" width="400" height="300"/><text x="200" y="140" text-anchor="middle" fill="#666" font-family="sans-serif" font-size="16">Tree species image</text></svg>`
-)}`
+import WikiImage from './WikiImage'
 
 export default function TreeSpeciesGrid() {
   const [visible, setVisible] = useState(20)
-  const [failed, setFailed] = useState<Set<number>>(new Set())
   const loadMore = () => setVisible(p => Math.min(p + 20, species.length))
-
-  const getSrc = (s: typeof species[number]) => {
-    if (failed.has(s.id)) return PLACEHOLDER
-    return `https://picsum.photos/seed/${s.id}tree/400/300`
-  }
 
   return (
     <section id="species" className="py-12 sm:py-24 px-3 sm:px-10 md:px-16 bg-gradient-to-b from-stone-900 to-stone-950">
@@ -40,12 +31,10 @@ export default function TreeSpeciesGrid() {
                 rel="noopener noreferrer"
                 className="block aspect-[4/3] overflow-hidden bg-stone-700"
               >
-                <img
-                  src={getSrc(s)}
+                <WikiImage
+                  title={s.wikiTitle}
                   alt={s.commonName}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                  onError={() => setFailed(p => new Set(p).add(s.id))}
                 />
               </a>
               <div className="p-3 sm:p-5">
