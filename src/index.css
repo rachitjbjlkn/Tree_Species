@@ -14,8 +14,13 @@
 @media (prefers-reduced-motion: reduce){ .hero-anim,.hero-zoom{ animation:none; opacity:1; } }
 
 html { scroll-behavior: smooth; }
-body { margin: 0; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+}
 
 @media (max-width: 374px) {
-  .text-4xl { font-size: 2rem; line-height: 1.1; }
+  .text-4xl { font-size: 1.75rem; line-height: 1.1; }
+  .text-3xl { font-size: 1.5rem; }
 }

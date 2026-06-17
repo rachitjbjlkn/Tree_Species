@@ -88,8 +88,8 @@ export default function HeroSection() {
         </div>
 
         <div
-          className="absolute bottom-8 sm:bottom-24 left-5 right-5 sm:left-auto sm:right-10 md:right-14 max-w-full sm:max-w-[260px] flex flex-col items-start gap-3 sm:gap-5 z-50 hero-anim hero-fade"
-          style={{ animationDelay: '0.85s' }}
+          className="absolute bottom-8 sm:bottom-24 left-5 right-5 sm:left-auto sm:right-10 md:right-14 max-w-full sm:max-w-[260px] flex flex-col items-start gap-3 sm:gap-5 z-50 hero-anim hero-fade safe-bottom"
+          style={{ animationDelay: '0.85s', paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
         >
           <p className="text-xs sm:text-sm text-white/80 leading-relaxed">
             Our interactive maps let you peel back the crust to trace how stones, fossils, and deep time combine to shape the ground beneath your feet.
